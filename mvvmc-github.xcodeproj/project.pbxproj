@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC287C1A1D49500500A23226 /* NavigationAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC287C191D49500500A23226 /* NavigationAppCoordinator.swift */; };
 		DC63D3D61D3A58E100E108A7 /* UserDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63D3D51D3A58E100E108A7 /* UserDetailHeaderCell.swift */; };
 		DC67E9C61D356DD300F7DC25 /* RepositoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67E9C51D356DD300F7DC25 /* RepositoriesListViewModel.swift */; };
 		DC702AE61D416AA3007B2596 /* repos.json in Resources */ = {isa = PBXBuildFile; fileRef = DC702AE51D416AA3007B2596 /* repos.json */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC287C191D49500500A23226 /* NavigationAppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationAppCoordinator.swift; sourceTree = "<group>"; };
 		DC63D3D51D3A58E100E108A7 /* UserDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailHeaderCell.swift; sourceTree = "<group>"; };
 		DC67E9C51D356DD300F7DC25 /* RepositoriesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RepositoriesListViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DC702AE51D416AA3007B2596 /* repos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = repos.json; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			children = (
 				DCE52AFE1D343BD600091510 /* MainAppCoordinator.swift */,
 				DCDA93831D4817CC00D5DAB4 /* ProfileAppCoordinator.swift */,
+				DC287C191D49500500A23226 /* NavigationAppCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				DC8BEFFE1D35954C0044DBD8 /* RepositoryDetailViewModel.swift in Sources */,
 				DCE52B071D3444FB00091510 /* RepositoriesListViewController.swift in Sources */,
 				DC8BEFFB1D3595250044DBD8 /* RepositoryDetailViewController.swift in Sources */,
+				DC287C1A1D49500500A23226 /* NavigationAppCoordinator.swift in Sources */,
 				DCE52B0A1D3447A500091510 /* DataStore.swift in Sources */,
 				DC7D32041D47B33B00CB336A /* BasicAuthenticationService.swift in Sources */,
 				DCDE41ED1D3B98B900C4BB1F /* SearchViewController.swift in Sources */,
