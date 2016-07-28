@@ -1,7 +1,4 @@
 //
-//  NavigationAppCoordinator.swift
-//  mvvmc-github
-//
 //  Created by Felix Simoes on 27/07/16.
 //  Copyright © 2016 Njiuko. All rights reserved.
 //
@@ -9,7 +6,7 @@
 import Foundation
 import UIKit
 
-class NavigationAppCoordinator {
+class NavigationCoordinator {
     private struct StoryboardConstants {
         static let name = "Main"
         static let searchIdentifier = "Search"
@@ -46,7 +43,7 @@ class NavigationAppCoordinator {
     
     private func showUser(_ user: UserModel?) {
         let vc = storyboard.instantiateViewController(withIdentifier: StoryboardConstants.userDetailIdentifier) as! UserDetailViewController
-        vc.viewModel = UserDetailViewModel(user: user, dataStore: dataStore, isProfileUser: (user == nil))
+        vc.viewModel = UserDetailViewModel(user: user, dataStore: dataStore)
         vc.viewModel.didSelectRepositoryCallback = { [unowned self] repository in
             self.showDetail(forRepository: repository, shouldShowOwner: false)
         }

@@ -1,7 +1,4 @@
 //
-//  AppDelegate.swift
-//  mvvmc-github
-//
 //  Created by Felix Simoes on 11/07/16.
 //  Copyright © 2016 Njiuko. All rights reserved.
 //
@@ -13,33 +10,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private var app: App!
+    private var app: AppSetup!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.main().bounds)
+        
+        app = AppSetup(window: window!)
+
         window?.makeKeyAndVisible()
-        
-        app = App(window: window!)
-        
+
         return true
     }
 
 }
 
-class App {
-    
-    private var mainAppCoordinator: MainAppCoordinator
-    private var profileAppCoordinator: ProfileAppCoordinator
+class AppSetup {
+    private var searchCoordinator: SearchCoordinator
+    private var profileCoordinator: ProfileCoordinator
     private var authentication: AuthenticationService
     private var apiClient: ApiClient
     private var dataStore: DataStore
     
     init(window: UIWindow) {
-        let mainNavigationController = UINavigationController()
-        let loggedUserNavigationController = UINavigationController()
+        let searchNavigationController = UINavigationController()
+        let profileNavigationController = UINavigationController()
         
         let tabbarController = UITabBarController()
-        tabbarController.viewControllers = [mainNavigationController, loggedUserNavigationController]
+        tabbarController.viewControllers = [searchNavigationController, profileNavigationController]
         
         window.rootViewController = tabbarController
         
@@ -51,10 +48,10 @@ class App {
         
         dataStore = WebDataStore(apiClient: apiClient, authenticationService: authentication)
         
-        mainAppCoordinator = MainAppCoordinator(navigationController: mainNavigationController, dataStore: dataStore)
-        mainAppCoordinator.start()
+        searchCoordinator = SearchCoordinator(navigationController: searchNavigationController, dataStore: dataStore)
+        searchCoordinator.start()
         
-        profileAppCoordinator = ProfileAppCoordinator(navigationController: loggedUserNavigationController, dataStore: dataStore, authenticationService: authentication)
-        profileAppCoordinator.start()
+        profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController, dataStore: dataStore, authenticationService: authentication)
+        profileCoordinator.start()
     }
 }

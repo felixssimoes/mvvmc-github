@@ -13,12 +13,10 @@ class UserDetailViewModel {
     private let dataStore: DataStore
     private var user: UserModel?
     private var repositories: [RepositoryModel] = []
-    private var isProfileUser: Bool
-    
-    init(user: UserModel?, dataStore: DataStore, isProfileUser: Bool = false) {
+
+    init(user: UserModel?, dataStore: DataStore) {
         self.user = user
         self.dataStore = dataStore
-        self.isProfileUser = isProfileUser
     }
     
     // MARK:
@@ -50,7 +48,7 @@ class UserDetailViewModel {
     // MARK:
     
     func loadData(completion: (result: Result<Void, String>) -> Void) {
-        if isProfileUser {
+        if user == nil {
             loadProfileData(completion: completion)
         } else {
             loadUserData(completion: completion)
