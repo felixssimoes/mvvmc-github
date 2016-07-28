@@ -25,6 +25,7 @@ extension ApiRouter {
         case .repositories: return jsonFromFile(fileName: "repos")!
         case .userRepositories: return jsonFromFile(fileName: "repos")!
         case .repositoriesSearch: return jsonFromFile(fileName: "repos_search")!
+        case .profile: return jsonFromFile(fileName: "user")!
         default: return [:]
         }
     }

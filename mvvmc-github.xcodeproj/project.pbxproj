@@ -24,6 +24,8 @@
 		DC8BEFFB1D3595250044DBD8 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFFA1D3595250044DBD8 /* RepositoryDetailViewController.swift */; };
 		DC8BEFFE1D35954C0044DBD8 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFFD1D35954C0044DBD8 /* RepositoryDetailViewModel.swift */; };
 		DC8C44771D49FD9100263A6E /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C44761D49FD9100263A6E /* AuthenticationCoordinator.swift */; };
+		DC8C44791D4A383300263A6E /* UserDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C44781D4A383300263A6E /* UserDetailViewModelTests.swift */; };
+		DC8C447B1D4A3A9F00263A6E /* TestAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C447A1D4A3A9F00263A6E /* TestAuthenticationService.swift */; };
 		DCB4F0651D3A536C00B8D653 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4F0641D3A536C00B8D653 /* UserDetailViewModel.swift */; };
 		DCB4F0681D3A56CC00B8D653 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4F0671D3A56CC00B8D653 /* UserDetailViewController.swift */; };
 		DCD21B7D1D3BE0FB00BD9F66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD21B7C1D3BE0FB00BD9F66 /* SearchViewModel.swift */; };
@@ -77,6 +79,8 @@
 		DC8BEFFA1D3595250044DBD8 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		DC8BEFFD1D35954C0044DBD8 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		DC8C44761D49FD9100263A6E /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		DC8C44781D4A383300263A6E /* UserDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewModelTests.swift; sourceTree = "<group>"; };
+		DC8C447A1D4A3A9F00263A6E /* TestAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAuthenticationService.swift; sourceTree = "<group>"; };
 		DCB4F0641D3A536C00B8D653 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserDetailViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DCB4F0671D3A56CC00B8D653 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		DCD21B7C1D3BE0FB00BD9F66 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SearchViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -223,6 +227,7 @@
 				DCD21B8C1D3C1FD400BD9F66 /* ApiClientTests.swift */,
 				DCD21B911D3C27F100BD9F66 /* WebStoreUsersTests.swift */,
 				DC702AE71D416AFD007B2596 /* WebStoreRepositoriesTests.swift */,
+				DC8C44781D4A383300263A6E /* UserDetailViewModelTests.swift */,
 			);
 			path = "mvvmc-github-tests";
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				DCD21B8F1D3C277B00BD9F66 /* TestApiClient.swift */,
+				DC8C447A1D4A3A9F00263A6E /* TestAuthenticationService.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -491,7 +497,9 @@
 				DC702AE81D416AFD007B2596 /* WebStoreRepositoriesTests.swift in Sources */,
 				DCD21B921D3C27F100BD9F66 /* WebStoreUsersTests.swift in Sources */,
 				DCD21B8D1D3C1FD400BD9F66 /* ApiClientTests.swift in Sources */,
+				DC8C447B1D4A3A9F00263A6E /* TestAuthenticationService.swift in Sources */,
 				DCD21B901D3C277B00BD9F66 /* TestApiClient.swift in Sources */,
+				DC8C44791D4A383300263A6E /* UserDetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
