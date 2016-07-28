@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login-->
+        <!--Login View Controller-->
         <scene sceneID="2tY-ZK-H5d">
             <objects>
-                <viewController id="Xam-VQ-17C" customClass="LoginViewController" customModule="mvvmc_github" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="Xam-VQ-17C" customClass="LoginViewController" customModule="mvvmc_github" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xTy-oP-IRY"/>
                         <viewControllerLayoutGuide type="bottom" id="4qw-iL-tjf"/>
@@ -26,7 +26,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgK-tq-gJV">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVL-be-1dQ">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -35,12 +35,12 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXz-qB-ZIQ">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9df-gM-auz">
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="didSelectCancel" destination="Xam-VQ-17C" eventType="touchUpInside" id="g7Z-uB-rWR"/>
+                                    <action selector="didSelectLogin" destination="Xam-VQ-17C" eventType="touchUpInside" id="OJh-zw-a2T"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,13 +60,6 @@
                             <constraint firstItem="9df-gM-auz" firstAttribute="centerX" secondItem="mXz-qB-ZIQ" secondAttribute="centerX" id="ils-0l-KxI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" id="jaM-kE-DHw">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yl6-DO-FoD">
-                            <connections>
-                                <action selector="didSelectLogin" destination="Xam-VQ-17C" id="eTK-gb-M2l"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="passwordField" destination="mXz-qB-ZIQ" id="rec-F2-MHi"/>
                         <outlet property="usernameField" destination="cgK-tq-gJV" id="zv7-5M-cls"/>

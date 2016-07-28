@@ -9,6 +9,7 @@ import UIKit
 class ProfileCoordinator {
     private let dataStore: DataStore
     private let authenticationService: AuthenticationService
+    private let authenticationCoordinator: AuthenticationCoordinator
     private let navigationController: UINavigationController
     private let navigationCoordinator: NavigationCoordinator
     
@@ -16,7 +17,11 @@ class ProfileCoordinator {
         self.navigationController = navigationController
         self.dataStore = dataStore
         self.authenticationService = authenticationService
+        authenticationCoordinator = AuthenticationCoordinator(navigationController: navigationController, dataStore: dataStore, authenticationService: authenticationService)
         navigationCoordinator = NavigationCoordinator(navigationController: navigationController, dataStore: dataStore)
+        navigationCoordinator.needsAuthenticationCallback = { [unowned self] in
+            self.authenticationCoordinator.start()
+        }
     }
     
     func start() {

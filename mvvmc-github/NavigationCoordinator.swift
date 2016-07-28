@@ -15,10 +15,12 @@ class NavigationCoordinator {
         static let userDetailIdentifier = "UserDetail"
     }
     
-    let navigationController: UINavigationController
-    let dataStore: DataStore
-    let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
-    
+    private let navigationController: UINavigationController
+    private let dataStore: DataStore
+    private let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
+
+    var needsAuthenticationCallback: (() -> Void)?
+
     init(navigationController: UINavigationController, dataStore: DataStore) {
         self.navigationController = navigationController
         self.dataStore = dataStore
@@ -46,6 +48,9 @@ class NavigationCoordinator {
         vc.viewModel = UserDetailViewModel(user: user, dataStore: dataStore)
         vc.viewModel.didSelectRepositoryCallback = { [unowned self] repository in
             self.showDetail(forRepository: repository, shouldShowOwner: false)
+        }
+        vc.viewModel.notAuthorizedCallback = { [unowned self] in
+            self.needsAuthenticationCallback?()
         }
         navigationController.pushViewController(vc, animated: true)
     }

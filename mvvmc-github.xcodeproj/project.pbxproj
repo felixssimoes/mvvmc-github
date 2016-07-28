@@ -23,6 +23,7 @@
 		DC8BEFF81D3591170044DBD8 /* RepositoriesListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFF71D3591170044DBD8 /* RepositoriesListCellViewModel.swift */; };
 		DC8BEFFB1D3595250044DBD8 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFFA1D3595250044DBD8 /* RepositoryDetailViewController.swift */; };
 		DC8BEFFE1D35954C0044DBD8 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFFD1D35954C0044DBD8 /* RepositoryDetailViewModel.swift */; };
+		DC8C44771D49FD9100263A6E /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C44761D49FD9100263A6E /* AuthenticationCoordinator.swift */; };
 		DCB4F0651D3A536C00B8D653 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4F0641D3A536C00B8D653 /* UserDetailViewModel.swift */; };
 		DCB4F0681D3A56CC00B8D653 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4F0671D3A56CC00B8D653 /* UserDetailViewController.swift */; };
 		DCD21B7D1D3BE0FB00BD9F66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD21B7C1D3BE0FB00BD9F66 /* SearchViewModel.swift */; };
@@ -75,6 +76,7 @@
 		DC8BEFF71D3591170044DBD8 /* RepositoriesListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesListCellViewModel.swift; sourceTree = "<group>"; };
 		DC8BEFFA1D3595250044DBD8 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		DC8BEFFD1D35954C0044DBD8 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		DC8C44761D49FD9100263A6E /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		DCB4F0641D3A536C00B8D653 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserDetailViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DCB4F0671D3A56CC00B8D653 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		DCD21B7C1D3BE0FB00BD9F66 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SearchViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -329,6 +331,7 @@
 				DCE52AFE1D343BD600091510 /* SearchCoordinator.swift */,
 				DCDA93831D4817CC00D5DAB4 /* ProfileCoordinator.swift */,
 				DC287C191D49500500A23226 /* NavigationCoordinator.swift */,
+				DC8C44761D49FD9100263A6E /* AuthenticationCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				DCE52AE81D34370D00091510 /* AppDelegate.swift in Sources */,
 				DC7D32021D479E6D00CB336A /* AuthenticationService.swift in Sources */,
 				DCD21B7D1D3BE0FB00BD9F66 /* SearchViewModel.swift in Sources */,
+				DC8C44771D49FD9100263A6E /* AuthenticationCoordinator.swift in Sources */,
 				DCE52B151D344B4700091510 /* WebStoreRepositories.swift in Sources */,
 				DCE52B021D34400900091510 /* ApiClient.swift in Sources */,
 				DC67E9C61D356DD300F7DC25 /* RepositoriesListViewModel.swift in Sources */,
