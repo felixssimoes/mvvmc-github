@@ -49,7 +49,7 @@ class NavigationCoordinator {
         vc.viewModel.didSelectRepositoryCallback = { [unowned self] repository in
             self.showDetail(forRepository: repository, shouldShowOwner: false)
         }
-        vc.viewModel.notAuthorizedCallback = { [unowned self] in
+        vc.viewModel.unauthorizedCallback = { [unowned self] in
             self.needsAuthenticationCallback?()
         }
         navigationController.pushViewController(vc, animated: true)

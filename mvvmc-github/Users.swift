@@ -18,7 +18,7 @@ protocol UserModel {
 }
 
 enum UsersDataError: ErrorProtocol {
-    case notAuthorized
+    case unauthorized
     case other
 }
 

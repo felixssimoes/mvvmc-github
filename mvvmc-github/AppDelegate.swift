@@ -37,7 +37,9 @@ class AppSetup {
         
         let tabbarController = UITabBarController()
         tabbarController.viewControllers = [searchNavigationController, profileNavigationController]
-        
+        tabbarController.tabBar.items?[0].title = "Search Repositories"
+        tabbarController.tabBar.items?[1].title = "Profile"
+
         window.rootViewController = tabbarController
         
         authentication = BasicAuthenticationService()

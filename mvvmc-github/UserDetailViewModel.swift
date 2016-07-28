@@ -16,7 +16,7 @@ class UserDetailViewModel {
 
     private (set) var isProfile: Bool
 
-    var notAuthorizedCallback: (() -> Void)?
+    var unauthorizedCallback: (() -> Void)?
 
     init(user: UserModel?, dataStore: DataStore) {
         self.user = user
@@ -63,7 +63,7 @@ class UserDetailViewModel {
     func logout() {
         user = nil
         repositories = []
-        notAuthorizedCallback?()
+        unauthorizedCallback?()
     }
 
     private func loadUserData(completion: (result: Result<Void, String>) -> Void) {
@@ -75,8 +75,8 @@ class UserDetailViewModel {
 
     private func loadProfileData(completion: (result: Result<Void, String>) -> Void) {
         dataStore.profile().profile { [weak self] result in
-            if case .failure(let e) = result, e == .notAuthorized {
-                self?.notAuthorizedCallback?()
+            if case .failure(let e) = result, e == .unauthorized {
+                self?.unauthorizedCallback?()
                 return
             }
             self?.processUserDetailResult(result, completion: completion)

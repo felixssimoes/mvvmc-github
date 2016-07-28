@@ -62,7 +62,7 @@ class WebProfileDataProvider: ProfileDataProvider {
             if case .success(let json) = result, let user = WebStoreUser.user(fromJson: json) {
                 completion(result: .success(user))
             } else if case .failure(let e) = result , case .Unauthorized = e {
-                completion(result: .failure(.notAuthorized))
+                completion(result: .failure(.unauthorized))
             } else {
                 completion(result: .failure(.other))
             }

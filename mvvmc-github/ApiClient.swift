@@ -43,7 +43,7 @@ enum ApiRouter {
     case repositoriesSearch(String)
     case user(String)
     case userRepositories(String)
-    case loggedUser
+    case profile
 
     var parameters: [String:AnyObject] {
         switch self {
@@ -58,13 +58,13 @@ enum ApiRouter {
         case .repositoriesSearch: return baseUrlString + "/search/repositories"
         case .user(let username): return baseUrlString + "/users/\(username)"
         case .userRepositories(let username): return baseUrlString + "/users/\(username)/repos"
-        case .loggedUser: return baseUrlString + "/user"
+        case .profile: return baseUrlString + "/user"
         }
     }
 
     var requiresAuthentication: Bool {
         switch self {
-        case .loggedUser: return true
+        case .profile: return true
         default: return false
         }
     }
@@ -102,6 +102,6 @@ extension ApiClient {
     }
 
     func user(completion: ApiClientCompletionHandler) {
-        execute(route: ApiRouter.loggedUser, completion: completion)
+        execute(route: ApiRouter.profile, completion: completion)
     }
 }

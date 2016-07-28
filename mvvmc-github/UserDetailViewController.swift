@@ -47,7 +47,7 @@ class UserDetailViewController: UITableViewController {
     }
     
     private func updateUI() {
-        title = viewModel.username
+        title = viewModel.isProfile ? "Profile" : viewModel.username
         tableView.reloadData()
     }
 
