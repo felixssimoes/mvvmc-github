@@ -14,11 +14,14 @@ class UserDetailViewModel {
     private var user: UserModel?
     private var repositories: [RepositoryModel] = []
 
+    private (set) var isProfile: Bool
+
     var notAuthorizedCallback: (() -> Void)?
 
     init(user: UserModel?, dataStore: DataStore) {
         self.user = user
         self.dataStore = dataStore
+        isProfile = (user == nil)
     }
     
     // MARK:
@@ -30,7 +33,7 @@ class UserDetailViewModel {
     var name: String {
         return user?.name ?? username
     }
-    
+
     var numberOfRepositories: Int {
         return repositories.count
     }
@@ -50,11 +53,17 @@ class UserDetailViewModel {
     // MARK:
     
     func loadData(completion: (result: Result<Void, String>) -> Void) {
-        if user == nil {
+        if isProfile {
             loadProfileData(completion: completion)
         } else {
             loadUserData(completion: completion)
         }
+    }
+
+    func logout() {
+        user = nil
+        repositories = []
+        notAuthorizedCallback?()
     }
 
     private func loadUserData(completion: (result: Result<Void, String>) -> Void) {

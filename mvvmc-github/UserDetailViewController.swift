@@ -32,6 +32,11 @@ class UserDetailViewController: UITableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         updateUI()
+
+        if viewModel.isProfile {
+            let logountButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.didSelectLogountButton))
+            navigationItem.rightBarButtonItem = logountButton
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +48,13 @@ class UserDetailViewController: UITableViewController {
     
     private func updateUI() {
         title = viewModel.username
+        tableView.reloadData()
+    }
+
+    // MARK:
+
+    @IBAction func didSelectLogountButton() {
+        viewModel.logout()
         tableView.reloadData()
     }
 

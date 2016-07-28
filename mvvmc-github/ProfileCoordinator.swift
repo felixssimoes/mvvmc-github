@@ -20,6 +20,7 @@ class ProfileCoordinator {
         authenticationCoordinator = AuthenticationCoordinator(navigationController: navigationController, dataStore: dataStore, authenticationService: authenticationService)
         navigationCoordinator = NavigationCoordinator(navigationController: navigationController, dataStore: dataStore)
         navigationCoordinator.needsAuthenticationCallback = { [unowned self] in
+            self.authenticationService.logout()
             self.authenticationCoordinator.start()
         }
     }
