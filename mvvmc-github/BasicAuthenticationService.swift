@@ -17,15 +17,18 @@ class BasicAuthenticationService {
     private var username: String?
     private var password: String?
 
-    init() {
-        username = UserDefaults.standard.string(forKey: Constants.usernameKey)
-        password = UserDefaults.standard.string(forKey: Constants.passwordKey)
+    private let defaults: UserDefaults
+    
+    init(defaults: UserDefaults) {
+        self.defaults = defaults
+        username = defaults.string(forKey: Constants.usernameKey)
+        password = defaults.string(forKey: Constants.passwordKey)
     }
 
     private func updateUserDefaults() {
-        UserDefaults.standard.set(username, forKey: Constants.usernameKey)
-        UserDefaults.standard.set(password, forKey: Constants.passwordKey)
-        UserDefaults.standard.synchronize()
+        defaults.set(username, forKey: Constants.usernameKey)
+        defaults.set(password, forKey: Constants.passwordKey)
+        defaults.synchronize()
     }
 }
 

@@ -42,7 +42,7 @@ class AppSetup {
 
         window.rootViewController = tabbarController
         
-        authentication = BasicAuthenticationService()
+        authentication = BasicAuthenticationService(defaults: UserDefaults.standard)
         
         let myApi = MyApiClient()
         myApi.autenthication = authentication
