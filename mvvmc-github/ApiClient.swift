@@ -13,7 +13,7 @@ enum Result<T, E> {
     case failure(E)
 }
 
-enum ApiError: ErrorProtocol {
+enum ApiError: Error {
     case CouldNotParseJSON
     case NoData
     case NoSuccessStatusCode(statusCode: Int)

@@ -17,7 +17,7 @@ protocol RepositoryModel {
     var language: String? { get }
 }
 
-enum RepositoriesError: ErrorProtocol {
+enum RepositoriesError: Error {
     case invalidJson
     case other
 }

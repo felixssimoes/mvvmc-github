@@ -17,7 +17,7 @@ protocol UserModel {
     var name: String? { get }
 }
 
-enum UsersDataError: ErrorProtocol {
+enum UsersDataError: Error {
     case unauthorized
     case other
 }
