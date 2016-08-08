@@ -10,8 +10,10 @@ import Foundation
 
 class RepositoriesListCellViewModel {
     let title: String
+    let description: String
     
     init(repository: RepositoryModel) {
         title = repository.name
+        description = repository.description
     }
 }

@@ -31,6 +31,7 @@ class SearchViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
         if let cellViewModel = viewModel.repository(at: indexPath.row) {
             cell.textLabel?.text = cellViewModel.title
+            cell.detailTextLabel?.text = cellViewModel.description
         }
         return cell
     }
