@@ -23,10 +23,10 @@ enum UsersDataError: Error {
 }
 
 protocol UsersDataProvider {
-    func detail(username: String, completion: (result: Result<UserModel, UsersDataError>) -> Void)
+    func detail(username: String, completion: @escaping (Result<UserModel, UsersDataError>) -> Void)
 }
 
 protocol ProfileDataProvider {
     var isLoggedIn: Bool { get }
-    func profile(completion: (result: Result<UserModel, UsersDataError>) -> Void)
+    func profile(completion: @escaping (Result<UserModel, UsersDataError>) -> Void)
 }

@@ -34,19 +34,18 @@ class WebStoreUsersDataProvider: UsersDataProvider {
         self.apiClient = apiClient
     }
 
-    func detail(username: String, completion: (result: Result<UserModel, UsersDataError>) -> Void) {
+    func detail(username: String, completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
         apiClient.userDetail(withUsername: username) { result in
             if case .success(let json) = result, let user = WebStoreUser.user(fromJson: json) {
-                completion(result: .success(user))
+                completion(.success(user))
             } else {
-                completion(result: .failure(.other))
+                completion(.failure(.other))
             }
         }
     }
 }
 
 class WebProfileDataProvider: ProfileDataProvider {
-
     private let apiClient: ApiClient
     private let authenticationService: AuthenticationService
 
@@ -57,14 +56,14 @@ class WebProfileDataProvider: ProfileDataProvider {
 
     var isLoggedIn: Bool { return authenticationService.isLoggedIn }
     
-    func profile(completion: (result: Result<UserModel, UsersDataError>) -> Void) {
+    func profile(completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
         apiClient.user { result in
             if case .success(let json) = result, let user = WebStoreUser.user(fromJson: json) {
-                completion(result: .success(user))
+                completion(.success(user))
             } else if case .failure(let e) = result , case .Unauthorized = e {
-                completion(result: .failure(.unauthorized))
+                completion(.failure(.unauthorized))
             } else {
-                completion(result: .failure(.other))
+                completion(.failure(.other))
             }
         }
     }

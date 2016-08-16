@@ -43,16 +43,16 @@ class UserDetailViewModel {
         return RepositoriesListCellViewModel(repository: repositories[index])
     }
     
-    var didSelectRepositoryCallback: ((repository: RepositoryModel) -> Void)?
+    var didSelectRepositoryCallback: ((RepositoryModel) -> Void)?
     
     func useRepository(at index: Int) {
         guard index < numberOfRepositories else { return }
-        didSelectRepositoryCallback?(repository: repositories[index])
+        didSelectRepositoryCallback?(repositories[index])
     }
     
     // MARK:
     
-    func loadData(completion: (result: Result<Void, String>) -> Void) {
+    func loadData(completion: @escaping (Result<Void, String>) -> Void) {
         if isProfile {
             loadProfileData(completion: completion)
         } else {
@@ -66,14 +66,14 @@ class UserDetailViewModel {
         unauthorizedCallback?()
     }
 
-    private func loadUserData(completion: (result: Result<Void, String>) -> Void) {
+    private func loadUserData(completion: @escaping (Result<Void, String>) -> Void) {
         guard let user = user else { fatalError() }
         dataStore.users().detail(username: user.login) { [weak self] result in
             self?.processUserDetailResult(result, completion: completion)
         }
     }
 
-    private func loadProfileData(completion: (result: Result<Void, String>) -> Void) {
+    private func loadProfileData(completion: @escaping (Result<Void, String>) -> Void) {
         dataStore.profile().profile { [weak self] result in
             if case .failure(let e) = result, e == .unauthorized {
                 self?.unauthorizedCallback?()
@@ -83,7 +83,7 @@ class UserDetailViewModel {
         }
     }
 
-    private func processUserDetailResult(_ result: Result<UserModel, UsersDataError>, completion: (result: Result<Void, String>) -> Void) {
+    private func processUserDetailResult(_ result: Result<UserModel, UsersDataError>, completion: @escaping (Result<Void, String>) -> Void) {
         switch result {
         case .success(let user):
             self.user = user
@@ -91,15 +91,15 @@ class UserDetailViewModel {
                 switch result {
                 case .success(let repositories):
                     self.repositories = repositories
-                    completion(result: .success())
+                    completion(.success())
 
                 case .failure(_):
-                    completion(result: .failure("Error loading user's repositories"))
+                    completion(.failure("Error loading user's repositories"))
                 }
             }
 
         case .failure(_):
-            completion(result: .failure("Error loading user data"))
+            completion(.failure("Error loading user data"))
         }
     }
 }

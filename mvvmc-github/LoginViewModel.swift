@@ -21,13 +21,13 @@ class LoginViewModel {
         self.authenticationService = authenticationService
     }
 
-    func login(completion: (result: Result<Void, AuthenticationError>) -> Void) {
+    func login(completion: @escaping (Result<Void, AuthenticationError>) -> Void) {
         guard let username = username, !username.isEmpty else {
-            completion(result: .failure(.invalidUsername))
+            completion(.failure(.invalidUsername))
             return
         }
         guard let password = password, !password.isEmpty else {
-            completion(result: .failure(.invalidPassword))
+            completion(.failure(.invalidPassword))
             return
         }
 
@@ -35,10 +35,10 @@ class LoginViewModel {
             switch result {
             case .success:
                 self?.loginCallback?()
-                completion(result: .success())
+                completion(.success())
 
             case .failure(let e):
-                completion(result: .failure(e))
+                completion(.failure(e))
             }
         }
     }

@@ -19,7 +19,7 @@ enum ApiError: Error {
     case NoSuccessStatusCode(statusCode: Int)
     case DidNotValidate(errors: [String])
     case Unauthorized
-    case Other(NSError)
+    case Other(Error)
 }
 
 extension ApiError: CustomStringConvertible {
@@ -29,14 +29,14 @@ extension ApiError: CustomStringConvertible {
         case .NoData: return "No Data"
         case .NoSuccessStatusCode(let code): return "No success status code: \(code)"
         case .DidNotValidate(let e): return "Did not validate (\(e))"
-        case .Other(let err): return "Other error \(err.localizedDescription) \(err.code)"
+        case .Other(let err): return "Other error \(err)"
         case .Unauthorized: return "Unauthorized"
         }
     }
 }
 
 typealias ApiClientResult = Result<AnyObject, ApiError>
-typealias ApiClientCompletionHandler = (result: ApiClientResult) -> Void
+typealias ApiClientCompletionHandler = (ApiClientResult) -> Void
 
 enum ApiRouter {
     case repositories
@@ -47,7 +47,7 @@ enum ApiRouter {
 
     var parameters: [String:AnyObject] {
         switch self {
-        case .repositoriesSearch(let query): return ["q" : query]
+        case .repositoriesSearch(let query): return ["q" : query as AnyObject]
         default: return [:]
         }
     }

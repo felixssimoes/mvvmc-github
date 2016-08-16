@@ -16,15 +16,15 @@ class SearchViewModel {
         dataProvider = dataStore.repositories()
     }
     
-    func search(text: String, completion: (result: Result<Void, String>) -> Void) {
+    func search(text: String, completion: @escaping (Result<Void, String>) -> Void) {
         dataProvider.searchRepositories(withText: text) { [weak self] result in
             switch result {
             case .success(let repositories):
                 self?.repositories = repositories
-                completion(result: .success())
+                completion(.success())
                 
             case .failure(_):
-                completion(result: .failure("There was an error while searching."))
+                completion(.failure("There was an error while searching."))
             }
         }
     }
@@ -41,10 +41,10 @@ class SearchViewModel {
     //MARK:
     //MARK: Navigation callback
     
-    var selectRepositoryCallback: ((repository: RepositoryModel) -> Void)?
+    var selectRepositoryCallback: ((RepositoryModel) -> Void)?
     
     func useRepository(at index: Int) {
         guard index < numberOfRepositories else { return }
-        selectRepositoryCallback?(repository: repositories[index])
+        selectRepositoryCallback?(repositories[index])
     }
 }

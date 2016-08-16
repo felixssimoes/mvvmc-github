@@ -18,7 +18,7 @@ struct WebStoreRepository: RepositoryModel {
     
     static func repository(fromJson json: AnyObject) -> RepositoryModel? {
         guard let ownerJson = json["owner"] as? [String : AnyObject] else { return nil }
-        guard let owner = WebStoreUser.user(fromJson: ownerJson) else { return nil }
+        guard let owner = WebStoreUser.user(fromJson: ownerJson as AnyObject) else { return nil }
         guard let id = json["id"] as? Int else { return nil }
         guard let name = json["name"] as? String else { return nil }
         guard let description = json["description"] as? String else { return nil }
@@ -42,7 +42,7 @@ struct WebStoreRepository: RepositoryModel {
 
 class WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
     
-    typealias RepositoriesCompletion = (result: Result<[RepositoryModel], RepositoriesError>) -> Void
+    typealias RepositoriesCompletion = (Result<[RepositoryModel], RepositoriesError>) -> Void
 
     private let apiClient: ApiClient
     
@@ -57,7 +57,7 @@ class WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
                 self.processJson(json, completion: completion)
 
             case .failure:
-                completion(result: .failure(.other))
+                completion(.failure(.other))
             }
         }
     }
@@ -67,13 +67,13 @@ class WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
             switch result {
             case .success(let json):
                 guard let reposJson = json["items"] as? [AnyObject] else {
-                    completion(result: .failure(.invalidJson))
+                    completion(.failure(.invalidJson))
                     return
                 }
-                self.processJson(reposJson, completion: completion)
+                self.processJson(reposJson as AnyObject, completion: completion)
 
             case .failure:
-                completion(result: .failure(.other))
+                completion(.failure(.other))
             }
         }
     }
@@ -85,16 +85,16 @@ class WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
                 self.processJson(json, completion: completion)
 
             case .failure:
-                completion(result: .failure(.other))
+                completion(.failure(.other))
             }
         }
     }
 
     private func processJson(_ json: AnyObject, completion: RepositoriesCompletion) {
         if let reposJson = json as? [AnyObject] {
-            completion(result: .success(reposJson.flatMap(WebStoreRepository.repository)))
+            completion(.success(reposJson.flatMap(WebStoreRepository.repository)))
         } else {
-            completion(result: .failure(.invalidJson))
+            completion(.failure(.invalidJson))
         }
     }
 }

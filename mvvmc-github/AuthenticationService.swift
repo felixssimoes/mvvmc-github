@@ -17,7 +17,7 @@ enum AuthenticationError {
 protocol AuthenticationService {
     var isLoggedIn: Bool { get }
 
-    func login(username: String, password: String, completion: (result: Result<Void, AuthenticationError>) -> Void)
+    func login(username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void)
     func logout()
     
     func sign(request: URLRequest) -> URLRequest?
