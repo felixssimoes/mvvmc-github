@@ -43,7 +43,7 @@
 		DCE52AF21D34370D00091510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE52AF01D34370D00091510 /* LaunchScreen.storyboard */; };
 		DCE52AFF1D343BD600091510 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52AFE1D343BD600091510 /* SearchCoordinator.swift */; };
 		DCE52B021D34400900091510 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52B011D34400900091510 /* ApiClient.swift */; };
-		DCE52B041D34406400091510 /* MyApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52B031D34406400091510 /* MyApiClient.swift */; };
+		DCE52B041D34406400091510 /* URLSessionApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52B031D34406400091510 /* URLSessionApiClient.swift */; };
 		DCE52B071D3444FB00091510 /* RepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52B061D3444FB00091510 /* RepositoriesListViewController.swift */; };
 		DCE52B0A1D3447A500091510 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52B091D3447A500091510 /* DataStore.swift */; };
 		DCE52B0C1D3447CA00091510 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE52B0B1D3447CA00091510 /* Repositories.swift */; };
@@ -102,7 +102,7 @@
 		DCE52AF31D34370D00091510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCE52AFE1D343BD600091510 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		DCE52B011D34400900091510 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		DCE52B031D34406400091510 /* MyApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MyApiClient.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		DCE52B031D34406400091510 /* URLSessionApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = URLSessionApiClient.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DCE52B061D3444FB00091510 /* RepositoriesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RepositoriesListViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DCE52B091D3447A500091510 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		DCE52B0B1D3447CA00091510 /* Repositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				DCE52B011D34400900091510 /* ApiClient.swift */,
-				DCE52B031D34406400091510 /* MyApiClient.swift */,
+				DCE52B031D34406400091510 /* URLSessionApiClient.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 				DCDE41ED1D3B98B900C4BB1F /* SearchViewController.swift in Sources */,
 				DC7D32081D47B4F100CB336A /* LoginViewController.swift in Sources */,
 				DC7D320C1D47B53C00CB336A /* LoginViewModel.swift in Sources */,
-				DCE52B041D34406400091510 /* MyApiClient.swift in Sources */,
+				DCE52B041D34406400091510 /* URLSessionApiClient.swift in Sources */,
 				DCB4F0651D3A536C00B8D653 /* UserDetailViewModel.swift in Sources */,
 				DCE52AFF1D343BD600091510 /* SearchCoordinator.swift in Sources */,
 				DCE52AE81D34370D00091510 /* AppDelegate.swift in Sources */,

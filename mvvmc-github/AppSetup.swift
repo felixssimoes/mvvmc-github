@@ -26,9 +26,9 @@ class AppSetup {
 
         authentication = BasicAuthenticationService()
 
-        let myApi = MyApiClient()
-        myApi.autenthication = authentication
-        apiClient = myApi
+        let api = URLSessionApiClient()
+        api.autenthication = authentication
+        apiClient = api
 
         dataStore = WebDataStore(apiClient: apiClient, authenticationService: authentication)
 

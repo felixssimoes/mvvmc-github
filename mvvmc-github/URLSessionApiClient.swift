@@ -1,14 +1,11 @@
 //
-//  MyApiClient.swift
-//  mvvmc-github
-//
 //  Created by Felix Simoes on 11/07/16.
 //  Copyright © 2016 Njiuko. All rights reserved.
 //
 
 import Foundation
 
-class MyApiClient: ApiClient {
+class URLSessionApiClient: ApiClient {
     let session: URLSession
     var autenthication: AuthenticationService?
 
@@ -80,6 +77,13 @@ extension ApiRouter {
             return URL(string: urlString)!
         } else {
             return URL(string: "\(urlString)?\(parameterString)")!
+        }
+    }
+
+    var requiresAuthentication: Bool {
+        switch self {
+        case .profile: return true
+        default: return false
         }
     }
 }

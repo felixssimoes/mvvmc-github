@@ -61,13 +61,6 @@ enum ApiRouter {
         case .profile: return baseUrlString + "/user"
         }
     }
-
-    var requiresAuthentication: Bool {
-        switch self {
-        case .profile: return true
-        default: return false
-        }
-    }
     
     private var baseUrlString: String {
         return "https://api.github.com"
