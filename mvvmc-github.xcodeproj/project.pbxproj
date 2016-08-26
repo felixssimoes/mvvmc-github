@@ -20,6 +20,7 @@
 		DC7D32061D47B43300CB336A /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC7D32051D47B43300CB336A /* Authentication.storyboard */; };
 		DC7D32081D47B4F100CB336A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7D32071D47B4F100CB336A /* LoginViewController.swift */; };
 		DC7D320C1D47B53C00CB336A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7D320B1D47B53C00CB336A /* LoginViewModel.swift */; };
+		DC89445E1D70681300BA3BA6 /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89445D1D70681300BA3BA6 /* AppSetup.swift */; };
 		DC8BEFF81D3591170044DBD8 /* RepositoriesListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFF71D3591170044DBD8 /* RepositoriesListCellViewModel.swift */; };
 		DC8BEFFB1D3595250044DBD8 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFFA1D3595250044DBD8 /* RepositoryDetailViewController.swift */; };
 		DC8BEFFE1D35954C0044DBD8 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8BEFFD1D35954C0044DBD8 /* RepositoryDetailViewModel.swift */; };
@@ -75,6 +76,7 @@
 		DC7D32051D47B43300CB336A /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		DC7D32071D47B4F100CB336A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DC7D320B1D47B53C00CB336A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DC89445D1D70681300BA3BA6 /* AppSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSetup.swift; sourceTree = "<group>"; };
 		DC8BEFF71D3591170044DBD8 /* RepositoriesListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesListCellViewModel.swift; sourceTree = "<group>"; };
 		DC8BEFFA1D3595250044DBD8 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		DC8BEFFD1D35954C0044DBD8 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				DCE52AE71D34370D00091510 /* AppDelegate.swift */,
+				DC89445D1D70681300BA3BA6 /* AppSetup.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC63D3D61D3A58E100E108A7 /* UserDetailHeaderCell.swift in Sources */,
+				DC89445E1D70681300BA3BA6 /* AppSetup.swift in Sources */,
 				DCDA93841D4817CC00D5DAB4 /* ProfileCoordinator.swift in Sources */,
 				DCE52B0E1D344A0900091510 /* Users.swift in Sources */,
 				DCE52B131D344AFA00091510 /* WebStoreUsers.swift in Sources */,
