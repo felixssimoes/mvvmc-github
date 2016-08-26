@@ -23,7 +23,7 @@ enum RepositoriesError: Error {
 }
 
 protocol RepositoriesDataProvider {
-    func allRepositories(completion: (result: Result<[RepositoryModel], RepositoriesError>) -> Void)
-    func searchRepositories(withText: String, completion: (result: Result<[RepositoryModel], RepositoriesError>) -> Void)
-    func repositories(forUser: UserModel, completion: (result: Result<[RepositoryModel], RepositoriesError>) -> Void)
+    func allRepositories(completion: @escaping (Result<[RepositoryModel], RepositoriesError>) -> Void)
+    func searchRepositories(withText: String, completion: @escaping (Result<[RepositoryModel], RepositoriesError>) -> Void)
+    func repositories(forUser: UserModel, completion: @escaping (Result<[RepositoryModel], RepositoriesError>) -> Void)
 }

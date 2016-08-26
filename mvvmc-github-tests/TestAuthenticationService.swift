@@ -12,8 +12,8 @@ import Foundation
 class TestAuthenticationService: AuthenticationService {
     let isLoggedIn = true
 
-    func login(username: String, password: String, completion: (result: Result<Void, AuthenticationError>) -> Void) {
-        completion(result: .success())
+    func login(username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void) {
+        completion(.success())
     }
 
     func logout() {}

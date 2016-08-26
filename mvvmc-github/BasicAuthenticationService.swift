@@ -14,8 +14,8 @@ class BasicAuthenticationService {
         static let passwordKey = "mvvmc-githug.authentication.password"
     }
 
-    private var username: String?
-    private var password: String?
+    fileprivate var username: String?
+    fileprivate var password: String?
 
     private let defaults: UserDefaults
     
@@ -25,7 +25,7 @@ class BasicAuthenticationService {
         password = defaults.string(forKey: Constants.passwordKey)
     }
 
-    private func updateUserDefaults() {
+    fileprivate func updateUserDefaults() {
         defaults.set(username, forKey: Constants.usernameKey)
         defaults.set(password, forKey: Constants.passwordKey)
         defaults.synchronize()
@@ -38,11 +38,11 @@ extension BasicAuthenticationService: AuthenticationService {
         return !(username?.isEmpty ?? true) && !(password?.isEmpty ?? true)
     }
     
-    func login(username: String, password: String, completion: (result: Result<Void, AuthenticationError>) -> Void) {
+    func login(username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void) {
         self.username = username
         self.password = password
         updateUserDefaults()
-        completion(result: .success())
+        completion(.success())
     }
     
     func logout() {

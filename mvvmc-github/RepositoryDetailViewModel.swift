@@ -36,9 +36,9 @@ class RepositoryDetailViewModel {
         self.userName = repository.owner.login
     }
     
-    var didSelectUserCallback: ((user: UserModel) -> Void)?
+    var didSelectUserCallback: ((UserModel) -> Void)?
     
     func selectUser() {
-        didSelectUserCallback?(user: repository.owner)
+        didSelectUserCallback?(repository.owner)
     }
 }

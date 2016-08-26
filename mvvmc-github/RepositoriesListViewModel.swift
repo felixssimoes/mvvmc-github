@@ -12,21 +12,21 @@ class RepositoriesListViewModel {
     private let dataProvider: RepositoriesDataProvider
     private var repositories: [RepositoryModel] = []
     
-    var selectRepositoryCallback: ((repository: RepositoryModel) -> Void)?
+    var selectRepositoryCallback: ((RepositoryModel) -> Void)?
     
     init(dataStore: DataStore) {
         dataProvider = dataStore.repositories()
     }
     
-    func loadData(completion: (result: Result<Void, String>) -> Void) {
+    func loadData(completion: @escaping (Result<Void, String>) -> Void) {
         dataProvider.allRepositories { [weak self] result in
             switch result {
             case .failure(_):
-                completion(result: .failure("Error loading repositories"))
+                completion(.failure("Error loading repositories"))
                 
             case .success(let repositories):
                 self?.repositories = repositories
-                completion(result: .success())
+                completion(.success())
             }
         }
     }
@@ -42,6 +42,6 @@ class RepositoriesListViewModel {
     
     func useRepository(at index: Int) {
         guard index < numberOfRepositories else { return }
-        selectRepositoryCallback?(repository: repositories[index])
+        selectRepositoryCallback?(repositories[index])
     }
 }

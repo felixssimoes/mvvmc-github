@@ -1,14 +1,11 @@
 //
-//  MyApiClient.swift
-//  mvvmc-github
-//
 //  Created by Felix Simoes on 11/07/16.
 //  Copyright © 2016 Njiuko. All rights reserved.
 //
 
 import Foundation
 
-class MyApiClient: ApiClient {
+class URLSessionApiClient: ApiClient {
     let session: URLSession
     var autenthication: AuthenticationService?
 
@@ -22,7 +19,7 @@ class MyApiClient: ApiClient {
 
         if route.requiresAuthentication {
             guard let signedRequest = autenthication?.sign(request: request) else {
-                completion(result: .failure(.Unauthorized))
+                completion(.failure(.Unauthorized))
                 return
             }
             request = signedRequest
@@ -36,12 +33,12 @@ class MyApiClient: ApiClient {
             
             func completionOnMainThread(result: ApiClientResult) {
                 DispatchQueue.main.async {
-                    completion(result: result)
+                    completion(result)
                 }
             }
             
             if error != nil {
-                completionOnMainThread(result: .failure(.Other(error!)))
+                completionOnMainThread(result: ApiClientResult.failure(.Other(error!)))
                 return
             }
             
@@ -64,7 +61,7 @@ class MyApiClient: ApiClient {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-                completionOnMainThread(result: .success(json))
+                completionOnMainThread(result: .success(json as AnyObject))
             } catch {
                 completionOnMainThread(result: .failure(.CouldNotParseJSON))
             }
@@ -80,6 +77,13 @@ extension ApiRouter {
             return URL(string: urlString)!
         } else {
             return URL(string: "\(urlString)?\(parameterString)")!
+        }
+    }
+
+    var requiresAuthentication: Bool {
+        switch self {
+        case .profile: return true
+        default: return false
         }
     }
 }
