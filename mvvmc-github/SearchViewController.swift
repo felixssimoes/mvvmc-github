@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: UITableViewController {
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let cellIdentifier = "RepositoryCell"
     }
 
@@ -22,7 +22,9 @@ class SearchViewController: UITableViewController {
         super.viewDidLoad()
         title = "Repository search"
     }
-    
+}
+
+extension SearchViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRepositories
     }

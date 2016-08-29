@@ -8,16 +8,17 @@
 
 import Foundation
 
-class WebDataStore: DataStore {
-    
-    private let apiClient: ApiClient
-    private let authenticationService: AuthenticationService
+class WebDataStore {
+    fileprivate let apiClient: ApiClient
+    fileprivate let authenticationService: AuthenticationService
 
     init(apiClient: ApiClient, authenticationService: AuthenticationService) {
         self.apiClient = apiClient
         self.authenticationService = authenticationService
     }
+}
 
+extension WebDataStore: DataStore {
     func repositories() -> RepositoriesDataProvider {
         return WebStoreRepositoriesDataProvider(apiClient: apiClient)
     }

@@ -26,14 +26,15 @@ struct WebStoreUser: UserModel {
     }
 }
 
-class WebStoreUsersDataProvider: UsersDataProvider {
-    
-    private let apiClient: ApiClient
+class WebStoreUsersDataProvider {
+    fileprivate let apiClient: ApiClient
 
     init(apiClient: ApiClient) {
         self.apiClient = apiClient
     }
+}
 
+extension WebStoreUsersDataProvider: UsersDataProvider {
     func detail(username: String, completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
         apiClient.userDetail(withUsername: username) { result in
             if case .success(let json) = result, let user = WebStoreUser.user(fromJson: json) {
@@ -45,16 +46,20 @@ class WebStoreUsersDataProvider: UsersDataProvider {
     }
 }
 
-class WebProfileDataProvider: ProfileDataProvider {
-    private let apiClient: ApiClient
-    private let authenticationService: AuthenticationService
+class WebProfileDataProvider {
+    fileprivate let apiClient: ApiClient
+    fileprivate let authenticationService: AuthenticationService
 
     init(apiClient: ApiClient, authenticationService: AuthenticationService) {
         self.apiClient = apiClient
         self.authenticationService = authenticationService
     }
+}
 
-    var isLoggedIn: Bool { return authenticationService.isLoggedIn }
+extension WebProfileDataProvider: ProfileDataProvider {
+    var isLoggedIn: Bool {
+        return authenticationService.isLoggedIn
+    }
     
     func profile(completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
         apiClient.user { result in

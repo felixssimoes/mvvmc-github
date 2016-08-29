@@ -40,16 +40,17 @@ struct WebStoreRepository: RepositoryModel {
     }
 }
 
-class WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
-    
+class WebStoreRepositoriesDataProvider {
     typealias RepositoriesCompletion = (Result<[RepositoryModel], RepositoriesError>) -> Void
 
-    private let apiClient: ApiClient
-    
+    fileprivate let apiClient: ApiClient
     init(apiClient: ApiClient) {
         self.apiClient = apiClient
     }
-    
+}
+
+extension WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
+
     func allRepositories(completion: RepositoriesCompletion) {
         apiClient.getAllRepositories { (result) in
             switch result {
