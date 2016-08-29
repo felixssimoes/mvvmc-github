@@ -24,7 +24,7 @@ class AppSetup {
 
         window.rootViewController = tabbarController
 
-        authentication = BasicAuthenticationService()
+        authentication = BasicAuthenticationService(defaults: UserDefaults.standard)
 
         let api = URLSessionApiClient()
         api.autenthication = authentication
