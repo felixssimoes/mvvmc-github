@@ -7,9 +7,10 @@ import Foundation
 
 class URLSessionApiClient: ApiClient {
     let session: URLSession
-    var autenthication: AuthenticationService?
+    var authentication: AuthenticationService
 
-    init() {
+    init(authentication: AuthenticationService) {
+        self.authentication = authentication
         session = URLSession(configuration: URLSessionConfiguration.default)
     }
     
@@ -18,7 +19,7 @@ class URLSessionApiClient: ApiClient {
         print("\(request.httpMethod ?? "?") : \(request.url?.absoluteString ?? "?")")
 
         if route.requiresAuthentication {
-            guard let signedRequest = autenthication?.sign(request: request) else {
+            guard let signedRequest = authentication.sign(request: request) else {
                 completion(.failure(.Unauthorized))
                 return
             }
