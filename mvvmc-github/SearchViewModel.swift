@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum SearchViewModelError: Error {
+    case searchFailed
+}
+
 class SearchViewModel {
     private let dataProvider: RepositoriesDataProvider
     private var repositories: [RepositoryModel] = []
@@ -16,7 +20,7 @@ class SearchViewModel {
         dataProvider = dataStore.repositories()
     }
     
-    func search(text: String, completion: @escaping (Result<Void, String>) -> Void) {
+    func search(text: String, completion: @escaping (Result<Void, SearchViewModelError>) -> Void) {
         dataProvider.searchRepositories(withText: text) { [weak self] result in
             switch result {
             case .success(let repositories):
@@ -24,7 +28,7 @@ class SearchViewModel {
                 completion(.success())
                 
             case .failure(_):
-                completion(.failure("There was an error while searching."))
+                completion(.failure(.searchFailed))
             }
         }
     }

@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum UserDetailViewModelError: Error {
+    case failedLoadingRepositories
+    case failedLoadingUser
+}
+
 class UserDetailViewModel {
     
     private let dataStore: DataStore
@@ -52,7 +57,7 @@ class UserDetailViewModel {
     
     // MARK:
     
-    func loadData(completion: @escaping (Result<Void, String>) -> Void) {
+    func loadData(completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         if isProfile {
             loadProfileData(completion: completion)
         } else {
@@ -66,14 +71,14 @@ class UserDetailViewModel {
         unauthorizedCallback?()
     }
 
-    private func loadUserData(completion: @escaping (Result<Void, String>) -> Void) {
+    private func loadUserData(completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         guard let user = user else { fatalError() }
         dataStore.users().detail(username: user.login) { [weak self] result in
             self?.processUserDetailResult(result, completion: completion)
         }
     }
 
-    private func loadProfileData(completion: @escaping (Result<Void, String>) -> Void) {
+    private func loadProfileData(completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         dataStore.profile().profile { [weak self] result in
             if case .failure(let e) = result, e == .unauthorized {
                 self?.unauthorizedCallback?()
@@ -83,23 +88,23 @@ class UserDetailViewModel {
         }
     }
 
-    private func processUserDetailResult(_ result: Result<UserModel, UsersDataError>, completion: @escaping (Result<Void, String>) -> Void) {
+    private func processUserDetailResult(_ result: Result<UserModel, UsersDataError>, completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         switch result {
         case .success(let user):
             self.user = user
-            dataStore.repositories().repositories(forUser: user) { result in
+            dataStore.repositories().repositories(forUser: user) { [weak self] result in
                 switch result {
                 case .success(let repositories):
-                    self.repositories = repositories
+                    self?.repositories = repositories
                     completion(.success())
 
                 case .failure(_):
-                    completion(.failure("Error loading user's repositories"))
+                    completion(.failure(.failedLoadingRepositories))
                 }
             }
 
         case .failure(_):
-            completion(.failure("Error loading user data"))
+            completion(.failure(.failedLoadingUser))
         }
     }
 }

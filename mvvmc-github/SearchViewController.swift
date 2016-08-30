@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension SearchViewModelError: CustomStringConvertible {
+    var description: String {
+        return "There was an error while searching."
+    }
+}
+
 class SearchViewController: UITableViewController {
     
     fileprivate struct Constants {
@@ -47,10 +53,10 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
 
-        viewModel.search(text: searchText) { [unowned self] result in
+        viewModel.search(text: searchText) { [weak self] result in
             switch result {
-            case .success: self.tableView.reloadData()
-            case .failure(let message): print(message)
+            case .success: self?.tableView.reloadData()
+            case .failure(let error): print(error)
             }
         }
     }

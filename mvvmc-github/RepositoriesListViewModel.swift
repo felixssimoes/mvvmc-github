@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum RepositoriesListViewModelError: Error {
+    case failedLoadRespositories
+}
+
 class RepositoriesListViewModel {
     private let dataProvider: RepositoriesDataProvider
     private var repositories: [RepositoryModel] = []
@@ -18,11 +22,11 @@ class RepositoriesListViewModel {
         dataProvider = dataStore.repositories()
     }
     
-    func loadData(completion: @escaping (Result<Void, String>) -> Void) {
+    func loadData(completion: @escaping (Result<Void, RepositoriesListViewModelError>) -> Void) {
         dataProvider.allRepositories { [weak self] result in
             switch result {
             case .failure(_):
-                completion(.failure("Error loading repositories"))
+                completion(.failure(.failedLoadRespositories))
                 
             case .success(let repositories):
                 self?.repositories = repositories

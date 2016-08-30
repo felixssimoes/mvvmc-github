@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+extension RepositoriesListViewModelError: CustomStringConvertible {
+    var description: String {
+        return "Error loading repositories"
+    }
+}
+
+
 class RepositoriesListViewController: UITableViewController {
     
     private struct Constants {
@@ -20,10 +27,10 @@ class RepositoriesListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.loadData { [unowned self] result in
+        viewModel.loadData { [weak self] result in
             switch result {
-            case .success: self.tableView.reloadData()
-            case .failure(let message): print(message)
+            case .success: self?.tableView.reloadData()
+            case .failure(let error): print(error)
             }
         }
     }

@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension UserDetailViewModelError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .failedLoadingRepositories: return "Error loading user's repositories"
+        case .failedLoadingUser: return "Error loading user data"
+        }
+    }
+}
+
 class UserDetailViewController: UITableViewController {
     
     private enum Sections: Int {
@@ -41,8 +50,12 @@ class UserDetailViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.loadData { [unowned self] result in
-            self.updateUI()
+        viewModel.loadData { [weak self] result in
+            switch result {
+            case .success: self?.updateUI()
+            case .failure(let error): print(error)
+            }
+            
         }
     }
     
