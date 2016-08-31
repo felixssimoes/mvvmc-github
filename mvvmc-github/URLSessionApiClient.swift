@@ -5,7 +5,7 @@
 
 import Foundation
 
-class URLSessionApiClient: ApiClient {
+class URLSessionApiClient {
     let session: URLSession
     var authentication: AuthenticationService
 
@@ -13,7 +13,9 @@ class URLSessionApiClient: ApiClient {
         self.authentication = authentication
         session = URLSession(configuration: URLSessionConfiguration.default)
     }
-    
+}
+
+extension URLSessionApiClient: ApiClient {
     func execute(route: ApiRouter, completion: ApiClientCompletionHandler) {
         var request = URLRequest(url: route.url)
         print("\(request.httpMethod ?? "?") : \(request.url?.absoluteString ?? "?")")
