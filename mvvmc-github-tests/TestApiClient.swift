@@ -11,7 +11,7 @@ import Foundation
 
 class TestApiClient: ApiClient {
     var callback: ((ApiRouter) -> Void)?
-    func execute(route: ApiRouter, completion: ApiClientCompletionHandler) {
+    func execute(_ route: ApiRouter, completion: @escaping ApiClientCompletionHandler) {
         callback?(route)
         completion(.success(route.json))
     }
@@ -21,15 +21,15 @@ class TestApiClient: ApiClient {
 extension ApiRouter {
     var json: AnyObject {
         switch self {
-        case .user: return jsonFromFile(fileName: "user")!
-        case .repositories: return jsonFromFile(fileName: "repos")!
-        case .userRepositories: return jsonFromFile(fileName: "repos")!
-        case .repositoriesSearch: return jsonFromFile(fileName: "repos_search")!
-        case .profile: return jsonFromFile(fileName: "user")!
+        case .user: return jsonFromFile(withName: "user")!
+        case .repositories: return jsonFromFile(withName: "repos")!
+        case .userRepositories: return jsonFromFile(withName: "repos")!
+        case .repositoriesSearch: return jsonFromFile(withName: "repos_search")!
+        case .profile: return jsonFromFile(withName: "user")!
         }
     }
     
-    private func jsonFromFile(fileName: String) -> AnyObject? {
+    private func jsonFromFile(withName fileName: String) -> AnyObject? {
         if let filePath = Bundle.main.path(forResource: fileName, ofType: "json"),
             let data = NSData(contentsOfFile: filePath) {
             do {

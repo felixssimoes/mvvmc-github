@@ -51,7 +51,7 @@ class WebStoreRepositoriesDataProvider {
 
 extension WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
 
-    func allRepositories(completion: @escaping RepositoriesCompletion) {
+    func allRepositories(_ completion: @escaping RepositoriesCompletion) {
         apiClient.getAllRepositories { (result) in
             switch result {
             case .success(let json):
@@ -64,7 +64,7 @@ extension WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
     }
     
     func searchRepositories(withText query: String, completion: @escaping RepositoriesCompletion) {
-        apiClient.searchRepository(query: query) { result in
+        apiClient.searchRepository(query) { result in
             switch result {
             case .success(let json):
                 guard let reposJson = json["items"] as? [AnyObject] else {
@@ -91,7 +91,7 @@ extension WebStoreRepositoriesDataProvider: RepositoriesDataProvider {
         }
     }
 
-    private func processJson(_ json: AnyObject, completion: @escaping RepositoriesCompletion) {
+    fileprivate func processJson(_ json: AnyObject, completion: @escaping RepositoriesCompletion) {
         if let reposJson = json as? [AnyObject] {
             completion(.success(reposJson.flatMap(WebStoreRepository.repository)))
         } else {

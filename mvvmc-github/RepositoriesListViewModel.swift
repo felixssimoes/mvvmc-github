@@ -13,8 +13,8 @@ enum RepositoriesListViewModelError: Error {
 }
 
 class RepositoriesListViewModel {
-    private let dataProvider: RepositoriesDataProvider
-    private var repositories: [RepositoryModel] = []
+    fileprivate let dataProvider: RepositoriesDataProvider
+    fileprivate var repositories: [RepositoryModel] = []
     
     var selectRepositoryCallback: ((RepositoryModel) -> Void)?
     
@@ -22,7 +22,7 @@ class RepositoriesListViewModel {
         dataProvider = dataStore.repositories()
     }
     
-    func loadData(completion: @escaping (Result<Void, RepositoriesListViewModelError>) -> Void) {
+    func loadData(_ completion: @escaping (Result<Void, RepositoriesListViewModelError>) -> Void) {
         dataProvider.allRepositories { [weak self] result in
             switch result {
             case .failure(_):

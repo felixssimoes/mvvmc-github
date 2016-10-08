@@ -22,7 +22,7 @@ private struct RepositoryDetailBodyData {
 
 class RepositoryDetailViewController: UITableViewController {
     var viewModel: RepositoryDetailViewModel!
-    private var bodyFields = [RepositoryDetailBodyData]()
+    fileprivate var bodyFields = [RepositoryDetailBodyData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class RepositoryDetailViewController: UITableViewController {
         updateUI()
     }
     
-    private func updateUI() {
+    fileprivate func updateUI() {
         bodyFields = [RepositoryDetailBodyData]()
         if viewModel.shouldShowOwner {
             bodyFields.append(RepositoryDetailBodyData(title: "User", detail: viewModel.userName, callback: { [unowned self] in

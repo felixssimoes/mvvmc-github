@@ -19,7 +19,7 @@ extension UserDetailViewModelError: CustomStringConvertible {
 
 class UserDetailViewController: UITableViewController {
     
-    private enum Sections: Int {
+    fileprivate enum Sections: Int {
         case header = 0
         case repositories = 1
         
@@ -59,7 +59,7 @@ class UserDetailViewController: UITableViewController {
         }
     }
     
-    private func updateUI() {
+    fileprivate func updateUI() {
         title = viewModel.isProfile ? "Profile" : viewModel.username
         tableView.reloadData()
     }

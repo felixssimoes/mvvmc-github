@@ -7,11 +7,11 @@ import Foundation
 import UIKit
 
 class AppSetup {
-    private var searchCoordinator: SearchCoordinator
-    private var profileCoordinator: ProfileCoordinator
-    private var authentication: AuthenticationService
-    private var apiClient: ApiClient
-    private var dataStore: DataStore
+    fileprivate var searchCoordinator: SearchCoordinator
+    fileprivate var profileCoordinator: ProfileCoordinator
+    fileprivate var authentication: AuthenticationService
+    fileprivate var apiClient: ApiClient
+    fileprivate var dataStore: DataStore
 
     init(window: UIWindow) {
         let searchNavigationController = UINavigationController()

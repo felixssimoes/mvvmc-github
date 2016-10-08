@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 class AuthenticationCoordinator {
-    private struct StoryboardConstants {
+    fileprivate struct StoryboardConstants {
         static let name = "Authentication"
         static let loginIdentifier = "Login"
     }
 
-    private let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
-    private let anchestorNavigationController: UINavigationController
-    private let authenticationService: AuthenticationService
-    private let dataStore: DataStore
+    fileprivate let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
+    fileprivate let anchestorNavigationController: UINavigationController
+    fileprivate let authenticationService: AuthenticationService
+    fileprivate let dataStore: DataStore
 
     var loginFinishedCallback: (() -> Void)?
 

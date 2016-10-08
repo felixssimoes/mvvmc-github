@@ -12,13 +12,13 @@ import Foundation
 class TestAuthenticationService: AuthenticationService {
     let isLoggedIn = true
 
-    func login(username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void) {
+    func login(_ username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void) {
         completion(.success())
     }
 
     func logout() {}
 
-    func sign(request: URLRequest) -> URLRequest? {
+    func sign(_ request: URLRequest) -> URLRequest? {
         return nil
     }
 }

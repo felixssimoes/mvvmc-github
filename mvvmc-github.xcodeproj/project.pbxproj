@@ -435,6 +435,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YUQHEPRMAS;
 						DevelopmentTeamName = "Njiuko GmbH";
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DCE52AE31D34370D00091510;
 					};
@@ -442,6 +443,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YUQHEPRMAS;
 						DevelopmentTeamName = "Njiuko GmbH";
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};

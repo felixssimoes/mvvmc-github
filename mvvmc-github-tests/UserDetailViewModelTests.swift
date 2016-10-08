@@ -11,8 +11,8 @@ import XCTest
 
 class UserDetailViewModelTests: XCTestCase {
 
-    private var api: TestApiClient!
-    private var dataStore: DataStore!
+    fileprivate var api: TestApiClient!
+    fileprivate var dataStore: DataStore!
 
     override func setUp() {
         super.setUp()

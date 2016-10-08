@@ -7,11 +7,11 @@ import Foundation
 import UIKit
 
 class ProfileCoordinator {
-    private let dataStore: DataStore
-    private let authenticationService: AuthenticationService
-    private let authenticationCoordinator: AuthenticationCoordinator
-    private let navigationController: UINavigationController
-    private let navigationCoordinator: NavigationCoordinator
+    fileprivate let dataStore: DataStore
+    fileprivate let authenticationService: AuthenticationService
+    fileprivate let authenticationCoordinator: AuthenticationCoordinator
+    fileprivate let navigationController: UINavigationController
+    fileprivate let navigationCoordinator: NavigationCoordinator
     
     init(navigationController: UINavigationController, dataStore: DataStore, authenticationService: AuthenticationService) {
         self.navigationController = navigationController
@@ -29,7 +29,7 @@ class ProfileCoordinator {
         showProfile()
     }
 
-    private func showProfile() {
+    fileprivate func showProfile() {
         navigationCoordinator.showProfile()
     }
 }

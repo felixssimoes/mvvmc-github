@@ -11,8 +11,8 @@ import XCTest
 
 class WebStoreRepositoriesTests: XCTestCase {
     
-    private var api: TestApiClient!
-    private var dataProvider: WebStoreRepositoriesDataProvider!
+    fileprivate var api: TestApiClient!
+    fileprivate var dataProvider: WebStoreRepositoriesDataProvider!
     
     override func setUp() {
         super.setUp()
@@ -62,7 +62,7 @@ class WebStoreRepositoriesTests: XCTestCase {
     func testUserRepositories() {
         var user: UserModel!
         let usersDataProvider = WebStoreUsersDataProvider(apiClient: api)
-        usersDataProvider.detail(username: "") { result in
+        usersDataProvider.detail("") { result in
             switch result {
             case .success(let u): user = u
             case .failure: XCTFail()

@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private var app: AppSetup!
+    fileprivate var app: AppSetup!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)

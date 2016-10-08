@@ -16,13 +16,13 @@ class URLSessionApiClient {
 }
 
 extension URLSessionApiClient: ApiClient {
-    func execute(route: ApiRouter, completion: @escaping ApiClientCompletionHandler) {
+    func execute(_ route: ApiRouter, completion: @escaping ApiClientCompletionHandler) {
         var request = URLRequest(url: route.url)
         print("\(request.httpMethod ?? "?") : \(request.url?.absoluteString ?? "?")")
 
         if route.requiresAuthentication {
-            guard let signedRequest = authentication.sign(request: request) else {
-                completion(.failure(.Unauthorized))
+            guard let signedRequest = authentication.sign(request) else {
+                completion(.failure(.unauthorized))
                 return
             }
             request = signedRequest
@@ -34,39 +34,39 @@ extension URLSessionApiClient: ApiClient {
             print("response: \(response)")
             //print("    data: \(data)")
             
-            func completionOnMainThread(result: ApiClientResult) {
+            func completionOnMainThread(_ result: ApiClientResult) {
                 DispatchQueue.main.async {
                     completion(result)
                 }
             }
             
             if error != nil {
-                completionOnMainThread(result: ApiClientResult.failure(.Other(error!)))
+                completionOnMainThread(ApiClientResult.failure(.other(error!)))
                 return
             }
             
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 switch statusCode {
                 case 401:
-                    completionOnMainThread(result: .failure(.Unauthorized))
+                    completionOnMainThread(.failure(.unauthorized))
                     return
                 case let s where s < 200 || s >= 300:
-                    completionOnMainThread(result: .failure(.NoSuccessStatusCode(statusCode: statusCode)))
+                    completionOnMainThread(.failure(.noSuccessStatusCode(statusCode: statusCode)))
                     return
                 default: break
                 }
             }
             
             guard let data = data else {
-                completionOnMainThread(result: .failure(.NoData))
+                completionOnMainThread(.failure(.noData))
                 return
             }
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-                completionOnMainThread(result: .success(json as AnyObject))
+                completionOnMainThread(.success(json as AnyObject))
             } catch {
-                completionOnMainThread(result: .failure(.CouldNotParseJSON))
+                completionOnMainThread(.failure(.couldNotParseJSON))
             }
         }
         task.resume()

@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 
 class NavigationCoordinator {
-    private struct StoryboardConstants {
+    fileprivate struct StoryboardConstants {
         static let name = "Main"
         static let searchIdentifier = "Search"
         static let repositoriesListIdentifier = "RepositoriesList"
@@ -15,9 +15,9 @@ class NavigationCoordinator {
         static let userDetailIdentifier = "UserDetail"
     }
     
-    private let navigationController: UINavigationController
-    private let dataStore: DataStore
-    private let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
+    fileprivate let navigationController: UINavigationController
+    fileprivate let dataStore: DataStore
+    fileprivate let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
 
     var needsAuthenticationCallback: (() -> Void)?
 
@@ -43,7 +43,7 @@ class NavigationCoordinator {
         showUser(nil)
     }
     
-    private func showUser(_ user: UserModel?) {
+    fileprivate func showUser(_ user: UserModel?) {
         let vc = storyboard.instantiateViewController(withIdentifier: StoryboardConstants.userDetailIdentifier) as! UserDetailViewController
         vc.viewModel = UserDetailViewModel(user: user, dataStore: dataStore)
         vc.viewModel.didSelectRepositoryCallback = { [unowned self] repository in

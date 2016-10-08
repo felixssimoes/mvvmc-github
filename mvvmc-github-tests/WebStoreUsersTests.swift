@@ -11,8 +11,8 @@ import XCTest
 
 class WebStoreUsersTests: XCTestCase {
     
-    private var api: TestApiClient!
-    private var dataProvider: UsersDataProvider!
+    fileprivate var api: TestApiClient!
+    fileprivate var dataProvider: UsersDataProvider!
 
     override func setUp() {
         super.setUp()
@@ -30,7 +30,7 @@ class WebStoreUsersTests: XCTestCase {
         }
         
         let userModelExpectation = expectation(description: "correct user model")
-        dataProvider.detail(username: username) { result in
+        dataProvider.detail(username) { result in
             if case .success(let u) = result {
                 XCTAssertEqual(u.login, "felixssimoes")
                 XCTAssertEqual(u.name, "Félix Simões")

@@ -11,7 +11,7 @@ import XCTest
 
 class ApiClientTests: XCTestCase {
     
-    private var api: TestApiClient!
+    fileprivate var api: TestApiClient!
 
     override func setUp() {
         super.setUp()
@@ -32,7 +32,7 @@ class ApiClientTests: XCTestCase {
             XCTAssertEqual(r.urlString, "https://api.github.com/search/repositories")
             XCTAssertEqual(r.parameters["q"] as? String, searchText)
         }
-        api.searchRepository(query: searchText) {_ in}
+        api.searchRepository(searchText) {_ in}
     }
     
     func testUserRepositories() {

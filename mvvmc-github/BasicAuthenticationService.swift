@@ -9,7 +9,7 @@
 import Foundation
 
 class BasicAuthenticationService {
-    private struct Constants {
+    fileprivate struct Constants {
         static let usernameKey = "mvvmc-githug.authentication.username"
         static let passwordKey = "mvvmc-githug.authentication.password"
     }
@@ -17,7 +17,7 @@ class BasicAuthenticationService {
     fileprivate var username: String?
     fileprivate var password: String?
 
-    private let defaults: UserDefaults
+    fileprivate let defaults: UserDefaults
     
     init(defaults: UserDefaults) {
         self.defaults = defaults
@@ -38,7 +38,7 @@ extension BasicAuthenticationService: AuthenticationService {
         return !(username?.isEmpty ?? true) && !(password?.isEmpty ?? true)
     }
     
-    func login(username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void) {
+    func login(_ username: String, password: String, completion: (Result<Void, AuthenticationError>) -> Void) {
         self.username = username
         self.password = password
         updateUserDefaults()
@@ -51,7 +51,7 @@ extension BasicAuthenticationService: AuthenticationService {
         updateUserDefaults()
     }
     
-    func sign(request: URLRequest) -> URLRequest? {
+    func sign(_ request: URLRequest) -> URLRequest? {
         guard let username = username, let password = password else { return nil }
         
         let authString = "\(username):\(password)"

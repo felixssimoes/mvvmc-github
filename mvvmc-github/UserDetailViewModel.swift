@@ -15,11 +15,11 @@ enum UserDetailViewModelError: Error {
 
 class UserDetailViewModel {
     
-    private let dataStore: DataStore
-    private var user: UserModel?
-    private var repositories: [RepositoryModel] = []
+    fileprivate let dataStore: DataStore
+    fileprivate var user: UserModel?
+    fileprivate var repositories: [RepositoryModel] = []
 
-    private (set) var isProfile: Bool
+    fileprivate (set) var isProfile: Bool
 
     var unauthorizedCallback: (() -> Void)?
 
@@ -57,11 +57,11 @@ class UserDetailViewModel {
     
     // MARK:
     
-    func loadData(completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
+    func loadData(_ completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         if isProfile {
-            loadProfileData(completion: completion)
+            loadProfileData(completion)
         } else {
-            loadUserData(completion: completion)
+            loadUserData(completion)
         }
     }
 
@@ -71,14 +71,14 @@ class UserDetailViewModel {
         unauthorizedCallback?()
     }
 
-    private func loadUserData(completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
+    fileprivate func loadUserData(_ completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         guard let user = user else { fatalError() }
-        dataStore.users().detail(username: user.login) { [weak self] result in
+        dataStore.users().detail(user.login) { [weak self] result in
             self?.processUserDetailResult(result, completion: completion)
         }
     }
 
-    private func loadProfileData(completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
+    fileprivate func loadProfileData(_ completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         dataStore.profile().profile { [weak self] result in
             if case .failure(let e) = result, e == .unauthorized {
                 self?.unauthorizedCallback?()
@@ -88,7 +88,7 @@ class UserDetailViewModel {
         }
     }
 
-    private func processUserDetailResult(_ result: Result<UserModel, UsersDataError>, completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
+    fileprivate func processUserDetailResult(_ result: Result<UserModel, UsersDataError>, completion: @escaping (Result<Void, UserDetailViewModelError>) -> Void) {
         switch result {
         case .success(let user):
             self.user = user

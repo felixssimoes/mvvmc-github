@@ -35,7 +35,7 @@ class WebStoreUsersDataProvider {
 }
 
 extension WebStoreUsersDataProvider: UsersDataProvider {
-    func detail(username: String, completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
+    func detail(_ username: String, completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
         apiClient.userDetail(withUsername: username) { result in
             if case .success(let json) = result, let user = WebStoreUser.user(fromJson: json) {
                 completion(.success(user))
@@ -61,11 +61,11 @@ extension WebProfileDataProvider: ProfileDataProvider {
         return authenticationService.isLoggedIn
     }
     
-    func profile(completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
+    func profile(_ completion: @escaping (Result<UserModel, UsersDataError>) -> Void) {
         apiClient.user { result in
             if case .success(let json) = result, let user = WebStoreUser.user(fromJson: json) {
                 completion(.success(user))
-            } else if case .failure(let e) = result , case .Unauthorized = e {
+            } else if case .failure(let e) = result , case .unauthorized = e {
                 completion(.failure(.unauthorized))
             } else {
                 completion(.failure(.other))

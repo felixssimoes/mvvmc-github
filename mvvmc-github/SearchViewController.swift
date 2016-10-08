@@ -53,7 +53,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
 
-        viewModel.search(text: searchText) { [weak self] result in
+        viewModel.search(searchText) { [weak self] result in
             switch result {
             case .success: self?.tableView.reloadData()
             case .failure(let error): print(error)

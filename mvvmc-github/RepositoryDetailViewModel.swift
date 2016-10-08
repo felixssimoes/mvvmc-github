@@ -10,7 +10,7 @@ import Foundation
 
 class RepositoryDetailViewModel {
     
-    private let repository: RepositoryModel
+    fileprivate let repository: RepositoryModel
     
     var name: String
     var description: String

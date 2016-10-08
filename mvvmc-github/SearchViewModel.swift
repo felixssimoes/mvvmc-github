@@ -13,14 +13,14 @@ enum SearchViewModelError: Error {
 }
 
 class SearchViewModel {
-    private let dataProvider: RepositoriesDataProvider
-    private var repositories: [RepositoryModel] = []
+    fileprivate let dataProvider: RepositoriesDataProvider
+    fileprivate var repositories: [RepositoryModel] = []
     
     init(dataStore: DataStore) {
         dataProvider = dataStore.repositories()
     }
     
-    func search(text: String, completion: @escaping (Result<Void, SearchViewModelError>) -> Void) {
+    func search(_ text: String, completion: @escaping (Result<Void, SearchViewModelError>) -> Void) {
         dataProvider.searchRepositories(withText: text) { [weak self] result in
             switch result {
             case .success(let repositories):

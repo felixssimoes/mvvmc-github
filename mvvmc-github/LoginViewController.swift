@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         viewModel.cancel()
     }
 
-    private func showErrorMessage(_ message: String) {
+    fileprivate func showErrorMessage(_ message: String) {
         let alert = UIAlertController(title: "Login", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)

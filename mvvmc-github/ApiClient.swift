@@ -14,23 +14,23 @@ enum Result<T, E> {
 }
 
 enum ApiError: Error {
-    case CouldNotParseJSON
-    case NoData
-    case NoSuccessStatusCode(statusCode: Int)
-    case DidNotValidate(errors: [String])
-    case Unauthorized
-    case Other(Error)
+    case couldNotParseJSON
+    case noData
+    case noSuccessStatusCode(statusCode: Int)
+    case didNotValidate(errors: [String])
+    case unauthorized
+    case other(Error)
 }
 
 extension ApiError: CustomStringConvertible {
     var description : String {
         switch self {
-        case .CouldNotParseJSON: return "Could not parse JSON"
-        case .NoData: return "No Data"
-        case .NoSuccessStatusCode(let code): return "No success status code: \(code)"
-        case .DidNotValidate(let e): return "Did not validate (\(e))"
-        case .Other(let err): return "Other error \(err)"
-        case .Unauthorized: return "Unauthorized"
+        case .couldNotParseJSON: return "Could not parse JSON"
+        case .noData: return "No Data"
+        case .noSuccessStatusCode(let code): return "No success status code: \(code)"
+        case .didNotValidate(let e): return "Did not validate (\(e))"
+        case .other(let err): return "Other error \(err)"
+        case .unauthorized: return "Unauthorized"
         }
     }
 }
@@ -62,28 +62,28 @@ enum ApiRouter {
         }
     }
     
-    private var baseUrlString: String {
+    fileprivate var baseUrlString: String {
         return "https://api.github.com"
     }
 }
 
 protocol ApiClient {
-    func execute(route: ApiRouter, completion: @escaping ApiClientCompletionHandler)
+    func execute(_ route: ApiRouter, completion: @escaping ApiClientCompletionHandler)
 }
 
 // MARK: - Repositories
 
 extension ApiClient {
-    func getAllRepositories(completion: @escaping ApiClientCompletionHandler) {
-        execute(route: ApiRouter.repositories, completion: completion)
+    func getAllRepositories(_ completion: @escaping ApiClientCompletionHandler) {
+        execute(ApiRouter.repositories, completion: completion)
     }
     
     func repositories(forUser username: String, completion: @escaping ApiClientCompletionHandler) {
-        execute(route: ApiRouter.userRepositories(username), completion: completion)
+        execute(ApiRouter.userRepositories(username), completion: completion)
     }
     
-    func searchRepository(query: String, completion: @escaping ApiClientCompletionHandler) {
-        execute(route: ApiRouter.repositoriesSearch(query), completion: completion)
+    func searchRepository(_ query: String, completion: @escaping ApiClientCompletionHandler) {
+        execute(ApiRouter.repositoriesSearch(query), completion: completion)
     }
 }
 
@@ -91,10 +91,10 @@ extension ApiClient {
 
 extension ApiClient {
     func userDetail(withUsername username: String, completion: @escaping ApiClientCompletionHandler) {
-        execute(route: ApiRouter.user(username), completion: completion)
+        execute(ApiRouter.user(username), completion: completion)
     }
 
-    func user(completion: @escaping ApiClientCompletionHandler) {
-        execute(route: ApiRouter.profile, completion: completion)
+    func user(_ completion: @escaping ApiClientCompletionHandler) {
+        execute(ApiRouter.profile, completion: completion)
     }
 }

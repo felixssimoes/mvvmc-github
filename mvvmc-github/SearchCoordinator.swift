@@ -7,15 +7,15 @@ import Foundation
 import UIKit
 
 class SearchCoordinator {
-    private struct StoryboardConstants {
+    fileprivate struct StoryboardConstants {
         static let name = "Main"
         static let searchIdentifier = "Search"
     }
     
-    private let navigationController: UINavigationController
-    private let dataStore: DataStore
-    private let navigationCoordinator: NavigationCoordinator
-    private let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
+    fileprivate let navigationController: UINavigationController
+    fileprivate let dataStore: DataStore
+    fileprivate let navigationCoordinator: NavigationCoordinator
+    fileprivate let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
     
     init(navigationController: UINavigationController, dataStore: DataStore) {
         self.navigationController = navigationController
@@ -28,7 +28,7 @@ class SearchCoordinator {
         showSearch()
     }
 
-    private func showSearch() {
+    fileprivate func showSearch() {
         let vc = storyboard.instantiateViewController(withIdentifier: StoryboardConstants.searchIdentifier) as! SearchViewController
         vc.viewModel = SearchViewModel(dataStore: dataStore)
         vc.viewModel.selectRepositoryCallback = { [unowned self] repository in

@@ -15,13 +15,13 @@ class LoginViewModel {
     var loginCallback: (() -> Void)?
     var closeCallback: (() -> Void)?
 
-    private var authenticationService: AuthenticationService
+    fileprivate var authenticationService: AuthenticationService
 
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
     }
 
-    func login(completion: @escaping (Result<Void, AuthenticationError>) -> Void) {
+    func login(_ completion: @escaping (Result<Void, AuthenticationError>) -> Void) {
         guard let username = username, !username.isEmpty else {
             completion(.failure(.invalidUsername))
             return
@@ -31,7 +31,7 @@ class LoginViewModel {
             return
         }
 
-        authenticationService.login(username: username, password: password) { [weak self] result in
+        authenticationService.login(username, password: password) { [weak self] result in
             switch result {
             case .success:
                 self?.loginCallback?()

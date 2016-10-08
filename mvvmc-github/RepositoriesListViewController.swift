@@ -18,7 +18,7 @@ extension RepositoriesListViewModelError: CustomStringConvertible {
 
 class RepositoriesListViewController: UITableViewController {
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let cellIdentifier = "RepositoryCell"
     }
     
