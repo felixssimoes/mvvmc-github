@@ -16,7 +16,7 @@ class URLSessionApiClient {
 }
 
 extension URLSessionApiClient: ApiClient {
-    func execute(route: ApiRouter, completion: ApiClientCompletionHandler) {
+    func execute(route: ApiRouter, completion: @escaping ApiClientCompletionHandler) {
         var request = URLRequest(url: route.url)
         print("\(request.httpMethod ?? "?") : \(request.url?.absoluteString ?? "?")")
 

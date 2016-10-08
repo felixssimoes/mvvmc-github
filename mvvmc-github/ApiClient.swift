@@ -68,21 +68,21 @@ enum ApiRouter {
 }
 
 protocol ApiClient {
-    func execute(route: ApiRouter, completion: ApiClientCompletionHandler)
+    func execute(route: ApiRouter, completion: @escaping ApiClientCompletionHandler)
 }
 
 // MARK: - Repositories
 
 extension ApiClient {
-    func getAllRepositories(completion: ApiClientCompletionHandler) {
+    func getAllRepositories(completion: @escaping ApiClientCompletionHandler) {
         execute(route: ApiRouter.repositories, completion: completion)
     }
     
-    func repositories(forUser username: String, completion: ApiClientCompletionHandler) {
+    func repositories(forUser username: String, completion: @escaping ApiClientCompletionHandler) {
         execute(route: ApiRouter.userRepositories(username), completion: completion)
     }
     
-    func searchRepository(query: String, completion: ApiClientCompletionHandler) {
+    func searchRepository(query: String, completion: @escaping ApiClientCompletionHandler) {
         execute(route: ApiRouter.repositoriesSearch(query), completion: completion)
     }
 }
@@ -90,11 +90,11 @@ extension ApiClient {
 // MARK: - Users
 
 extension ApiClient {
-    func userDetail(withUsername username: String, completion: ApiClientCompletionHandler) {
+    func userDetail(withUsername username: String, completion: @escaping ApiClientCompletionHandler) {
         execute(route: ApiRouter.user(username), completion: completion)
     }
 
-    func user(completion: ApiClientCompletionHandler) {
+    func user(completion: @escaping ApiClientCompletionHandler) {
         execute(route: ApiRouter.profile, completion: completion)
     }
 }
